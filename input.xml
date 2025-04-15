@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <cd>
+    <title>Empire Burlesque</title>
+    <artist>Bob Dylan</artist>
+    <country>USA</country>
+    <company>Columbia</company>
+    <price>10.90</price>
+    <year>1985</year>
+  </cd>
+  <cd>
+    <title>2Empire Burlesque</title>
+    <artist>2Bob Dylan</artist>
+    <country>2USA</country>
+    <company>2Columbia</company>
+    <price>210.90</price>
+    <year>2985</year>
+  </cd>
+</catalog>
