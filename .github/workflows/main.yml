@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir saxon-src
           wget -O saxon.zip https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-5/SaxonHE12-5J.zip
-          unzip SaxonHE12-5J.zip -d saxon-src
+          unzip saxon.zip -d saxon-src
 
       - name: Compile Saxon
         run: |
