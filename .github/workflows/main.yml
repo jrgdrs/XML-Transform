@@ -3,10 +3,9 @@ name: Saxon-9 XML Transformation
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - '**.xml'
+      - '**.xslt'
+      - '.github/workflows/saxon-transformation.yml'
 
 jobs:
   saxon-transformation:
@@ -24,17 +23,24 @@ jobs:
           distribution: 'zulu'
           java-version: '21'
 
-      # Install Saxon-HE 9
-      - name: Install Saxon-HE 9
+      - name: Download Saxon-HE 9.9 source
         run: |
-          wget -qO- https://github.com/Saxonica/Saxon-Archive/blob/main/Saxon-HE/9/9.9/saxon9-9-1-8source.zip | bsdtar -xvf- -C /usr/local/bin/saxon9.jar
-          ls -als
-          chmod +x /usr/local/bin/saxon9.jar
+          mkdir saxon-src
+          wget -O saxon.zip https://github.com/Saxonica/Saxon-Archive/raw/main/Saxon-HE/9/9.9/saxon9-9-1-8source.zip
+          unzip saxon.zip -d saxon-src
+
+      - name: Compile Saxon
+        run: |
+          cd saxon-src
+          mkdir build
+          find . -name "*.java" > sources.txt
+          javac -d build @sources.txt
 
       # Führe die XML-Transformation durch
       - name: Run Saxon transformation
         run: |
-          java -jar /usr/local/bin/saxon9.jar -s:input.xml -xsl:transform.xsl -o:output.xml
+          java -cp saxon-src/build net.sf.saxon.Transform \
+            -s:input.xml -xsl:transform.xsl -o:output.xml
 
       # Optional: Lade das Ergebnis hoch (z. B. als Artefakt)
       - name: Upload output artifact
