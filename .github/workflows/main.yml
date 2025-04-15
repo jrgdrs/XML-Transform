@@ -29,15 +29,10 @@ jobs:
           wget -O saxon.zip https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-5/SaxonHE12-5J.zip
           unzip saxon.zip -d saxon-src
 
-      - name: Compile Saxon
-        run: |
-          cd saxon-src
-
       # Führe die XML-Transformation durch
       - name: Run Saxon transformation
         run: |
-          java -cp saxon-src/saxon-he-12.5.jar \
-            -s:input.xml -xsl:transform.xsl -o:output.xml
+          java -cp saxon-src/saxon-he-12.5.jar -s:input.xml -xsl:transform.xsl -o:output.xml
 
       # Optional: Lade das Ergebnis hoch (z. B. als Artefakt)
       - name: Upload output artifact
