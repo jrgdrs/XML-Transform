@@ -27,7 +27,8 @@ jobs:
       # Install Saxon-HE 9
       - name: Install Saxon-HE 9
         run: |
-          wget https://github.com/Saxon-Project/Saxon/releases/download/Saxon-HE-9.9/saxon-he-9.9.1-8.jar -O /usr/local/bin/saxon9.jar
+          wget -qO- https://github.com/Saxonica/Saxon-Archive/blob/main/Saxon-HE/9/9.9/saxon9-9-1-8source.zip | bsdtar -xvf- -C /usr/local/bin/saxon9.jar
+          ls -als
           chmod +x /usr/local/bin/saxon9.jar
 
       # Führe die XML-Transformation durch
