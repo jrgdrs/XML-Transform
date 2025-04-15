@@ -22,7 +22,6 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '11'
-          distribution: 'adoptopenjdk'
 
       # Install Saxon-HE 9
       - name: Install Saxon-HE 9
