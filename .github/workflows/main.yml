@@ -37,7 +37,7 @@ jobs:
 
       # Optional: Lade das Ergebnis hoch (z. B. als Artefakt)
       - name: Upload output artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: transformed-xml
           path: output.xml
