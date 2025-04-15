@@ -2,7 +2,7 @@ name: Saxon-9 XML Transformation
 
 on:
   push:
-    branches:
+    paths:
       - '**.xml'
       - '**.xslt'
       - '.github/workflows/main.yml'
