@@ -26,20 +26,17 @@ jobs:
       - name: Download Saxon-HE 9.9 source
         run: |
           mkdir saxon-src
-          wget -O saxon.zip https://github.com/Saxonica/Saxon-Archive/raw/main/Saxon-HE/9/9.9/saxon9-9-1-8source.zip
-          unzip saxon.zip -d saxon-src
+          wget -O saxon.zip https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-5/SaxonHE12-5J.zip
+          unzip SaxonHE12-5J.zip -d saxon-src
 
       - name: Compile Saxon
         run: |
           cd saxon-src
-          mkdir build
-          find . -name "*.java" > sources.txt
-          javac -d build @sources.txt
 
       # Führe die XML-Transformation durch
       - name: Run Saxon transformation
         run: |
-          java -cp saxon-src/build net.sf.saxon.Transform \
+          java -cp saxon-src/saxon-he-12.5.jar \
             -s:input.xml -xsl:transform.xsl -o:output.xml
 
       # Optional: Lade das Ergebnis hoch (z. B. als Artefakt)
