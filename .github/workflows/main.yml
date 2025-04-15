@@ -5,7 +5,7 @@ on:
     branches:
       - '**.xml'
       - '**.xslt'
-      - '.github/workflows/saxon-transformation.yml'
+      - '.github/workflows/main.yml'
 
 jobs:
   saxon-transformation:
